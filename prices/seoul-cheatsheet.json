@@ -1,0 +1,148 @@
+{
+  "metadata": {
+    "region": "ap-northeast-2",
+    "region_name": "Asia Pacific (Seoul)",
+    "currency": "USD",
+    "as_of": "2026-05-03",
+    "source": "AWS public pricing pages, manual snapshot",
+    "note": "On-Demand hourly rates for Linux/single-AZ baseline. Authoritative source is `aws pricing get-products` or infracost. Values may drift; refresh quarterly. Free-tier and reservations not reflected.",
+    "validation_status": "DRAFT — pending user verification"
+  },
+
+  "ec2_linux_hourly": {
+    "t3.nano": 0.0064,
+    "t3.micro": 0.0128,
+    "t3.small": 0.0256,
+    "t3.medium": 0.0512,
+    "t3.large": 0.1024,
+    "t3.xlarge": 0.2048,
+    "t3.2xlarge": 0.4096,
+    "m5.large": 0.118,
+    "m5.xlarge": 0.236,
+    "m5.2xlarge": 0.472,
+    "m5.4xlarge": 0.944,
+    "m5.8xlarge": 1.888,
+    "c5.large": 0.105,
+    "c5.xlarge": 0.21,
+    "c5.2xlarge": 0.42,
+    "c5.4xlarge": 0.84,
+    "r5.large": 0.158,
+    "r5.xlarge": 0.316,
+    "r5.2xlarge": 0.632,
+    "g4dn.xlarge": 0.658,
+    "g4dn.2xlarge": 0.945,
+    "g4dn.4xlarge": 1.512,
+    "g5.xlarge": 1.408,
+    "g5.2xlarge": 1.696,
+    "p3.2xlarge": 4.234,
+    "p3.8xlarge": 16.938,
+    "p4d.24xlarge": 38.685
+  },
+
+  "ec2_windows_premium_hourly": {
+    "note": "Add this delta to the matching Linux rate when OS is Windows.",
+    "t3.medium": 0.0648,
+    "m5.large": 0.092,
+    "m5.xlarge": 0.184
+  },
+
+  "eks_hourly": {
+    "control_plane": 0.10,
+    "fargate_vcpu_hour": 0.04656,
+    "fargate_gb_hour": 0.00511
+  },
+
+  "rds_hourly": {
+    "db.t3.micro_mysql_singleaz": 0.026,
+    "db.t3.small_mysql_singleaz": 0.052,
+    "db.t3.medium_mysql_singleaz": 0.104,
+    "db.t3.large_mysql_singleaz": 0.208,
+    "db.m5.large_mysql_singleaz": 0.252,
+    "db.r5.large_postgres_singleaz": 0.32,
+    "multi_az_multiplier": 2.0,
+    "note": "Single-AZ MySQL baseline. Multi-AZ ≈ 2x. Postgres ≈ +5-10%. Aurora differs."
+  },
+
+  "nat_gateway_hourly": 0.059,
+  "nat_gateway_data_processing_per_gb": 0.062,
+
+  "elb_hourly": {
+    "alb": 0.0252,
+    "nlb": 0.0252,
+    "classic": 0.025,
+    "lcu_per_hour_note": "Each ALB/NLB also bills LCU usage; assume +0.008/h baseline for low traffic."
+  },
+
+  "ebs_per_gb_month": {
+    "gp3": 0.0912,
+    "gp2": 0.114,
+    "io2": 0.142,
+    "st1": 0.051,
+    "sc1": 0.0285,
+    "snapshot": 0.057,
+    "note": "Divide by 730 for hourly equivalent."
+  },
+
+  "data_transfer_per_gb": {
+    "out_to_internet_first_10TB": 0.126,
+    "inter_az": 0.02,
+    "vpc_peering_inter_region": 0.02,
+    "note": "Inbound free. PrivateLink/Transit Gateway billed separately."
+  },
+
+  "vpc_endpoint_hourly": {
+    "interface_per_az": 0.013,
+    "gateway": 0.0,
+    "note": "Interface endpoint billed per-AZ, per-endpoint. Add data processing fee per GB."
+  },
+
+  "cloudwatch": {
+    "logs_ingestion_per_gb": 0.76,
+    "logs_storage_per_gb_month": 0.0334,
+    "metrics_per_metric_per_month_first_10000": 0.30,
+    "alarm_per_alarm_per_month": 0.10
+  },
+
+  "s3_per_gb_month": {
+    "standard_first_50TB": 0.025,
+    "standard_ia": 0.0138,
+    "glacier_instant": 0.005,
+    "request_put_per_1000": 0.0047,
+    "request_get_per_1000": 0.00037
+  },
+
+  "msk_hourly": {
+    "kafka.m5.large": 0.252,
+    "kafka.m5.xlarge": 0.504,
+    "broker_storage_per_gb_month": 0.10
+  },
+
+  "elasticache_hourly": {
+    "cache.t3.micro": 0.022,
+    "cache.t3.small": 0.044,
+    "cache.m5.large": 0.182
+  },
+
+  "opensearch_hourly": {
+    "t3.small.search": 0.044,
+    "m5.large.search": 0.182,
+    "r5.large.search": 0.235
+  },
+
+  "lambda": {
+    "request_per_million": 0.20,
+    "compute_gb_second": 0.0000166667,
+    "note": "Free tier covers 1M requests + 400k GB-s/month."
+  },
+
+  "cloud9": {
+    "note": "Cloud9 environment itself is free; backing EC2 instance bills at standard EC2 rates. Default m5.large + 10GB EBS gp3."
+  },
+
+  "fixed_addons": {
+    "config_recorder_per_config_item": 0.003,
+    "guardduty_per_account_baseline_per_month": 4.0,
+    "secrets_manager_per_secret_per_month": 0.40,
+    "kms_cmk_per_month": 1.0
+  }
+}

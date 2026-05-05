@@ -1,0 +1,7 @@
+cache/
+*.tfplan
+.terraform/
+.terraform.lock.hcl
+*.log
+.DS_Store
+.omc/
