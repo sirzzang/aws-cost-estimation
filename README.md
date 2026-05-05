@@ -18,7 +18,7 @@ IaC로 띄운 AWS 리소스를 destroy하지 못하고 잊어버려 누적 청�
 
 1. **공개된 본 repo는 민감 정보 익명화 완료** — 사용자 식별자, AWS 계정 ID, 이메일, 절대경로 등 개인 정보 제거.
 2. **`prices/seoul-cheatsheet.json`은 ap-northeast-2 기준 작성 시점 스냅샷이며 예시일 뿐**입니다. AWS 단가는 자주 변하고, 본 스냅샷은 작성자가 수동으로 채운 DRAFT 상태입니다. 다른 리전, GPU 인스턴스 군, Fargate 단가는 특히 빠르게 변하므로 그대로 신뢰하지 마세요. 정확한 단가가 필요하면 `aws pricing get-products` 또는 [infracost](https://www.infracost.io)를 사용하세요.
-3. **목적은 "대략 파악"**입니다. ±15~30% 오차를 가정하고 의사결정 보조 도구로만 쓰세요. 실제 청구액은 AWS Budgets / Cost Explorer 콘솔이 ground truth입니다. 본 도구는 비용 사고를 **막기 위한 인지 자극**이지 회계 도구가 아닙니다.
+3. **목적은 "대략 파악"입니다.** ±15~30% 오차를 가정하고 의사결정 보조 도구로만 쓰세요. 실제 청구액은 AWS Budgets / Cost Explorer 콘솔이 ground truth입니다. 본 도구는 비용 사고를 **막기 위한 인지 자극**이지 회계 도구가 아닙니다.
 
 ## Install
 
